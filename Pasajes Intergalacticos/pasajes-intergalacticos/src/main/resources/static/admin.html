@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administración</title>
+    <link rel="stylesheet" href="styles/admin.css">
+</head>
+
+<body>
+    <header>
+        <h1>Panel de Administración</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Cerrar Sesión</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="panel-admin">
+        <!-- Sección de Usuarios -->
+        <section id="usuarios-section">
+            <h2>Lista de Usuarios</h2>
+            <input type="text" id="buscarUsuarios" placeholder="Buscar por nombre o email">
+            <div id="usuarios-list" class="cards-container">
+                <!-- Aquí se mostrarán los usuarios -->
+            </div>
+        </section>
+
+        <!-- Sección de Empresas -->
+        <section id="empresas-section">
+            <h2>Lista de Empresas</h2>
+            <input type="text" id="buscarEmpresas" placeholder="Buscar por nombre o email">
+            <div id="empresas-list" class="cards-container">
+                <!-- Aquí se mostrarán las empresas -->
+            </div>
+        </section>
+
+        <!-- Sección de Naves -->
+        <section id="naves-section">
+            <h2>Lista de Naves</h2>
+            <input type="text" id="buscarNaves" placeholder="Buscar por nombre o modelo">
+            <div id="naves-list" class="cards-container">
+                <!-- Aquí se mostrarán las naves -->
+            </div>
+        </section>
+
+        <!-- Sección de Crear Nave -->
+        <section id="crear-nave-section">
+            <h2>Crear Nave</h2>
+            <form id="crearNaveForm">
+                <input type="text" id="naveNombre" placeholder="Nombre de la Nave" required>
+                <input type="text" id="naveModelo" placeholder="Modelo" required>
+                <input type="number" id="naveCapacidad" placeholder="Capacidad" required>
+                <input type="number" id="naveFilas" placeholder="Número de filas" required>
+                <input type="number" id="naveColumnas" placeholder="Número de columnas" required>
+
+                <button type="submit">Crear Nave</button>
+            </form>
+        </section>
+
+    </div>
+
+    <script src="js/admin.js"></script>
+</body>
+
+</html>

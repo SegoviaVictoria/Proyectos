@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Viajes - Empresa</title>
+    <link rel="stylesheet" href="styles/empresa.css">
+</head>
+
+<body>
+    <header>
+        <h1>Gestión de Viajes</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Cerrar Sesión</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Sección para ver los viajes de la empresa -->
+        <section id="viajes-section">
+            <h2>Viajes publicados</h2>
+            <div id="viajes-list"></div>
+        </section>
+
+        <!-- Sección para crear un nuevo viaje -->
+        <section id="crear-viaje-section">
+            <h2>Crear Nuevo Viaje</h2>
+            <form id="crear-viaje-form">
+                <input type="text" id="origen" placeholder="Origen" required>
+                <input type="text" id="destino" placeholder="Destino" required>
+                <input type="datetime-local" id="fecha-salida" required>
+                <input type="number" id="duracion" placeholder="Duración (minutos)" required>
+                <input type="number" id="precio" placeholder="Precio ($)" required>
+                <select id="nave" required>
+                    <!-- Las opciones de naves se cargarán dinámicamente -->
+                </select>
+                <button type="submit">Crear Viaje</button>
+            </form>
+        </section>
+
+    </main>
+
+    <script src="js/empresa.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,341 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Outfit:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap');
+
+body {
+    font-family: 'Rajdhani', 'Orbitron', 'Montserrat', 'Segoe UI', Arial, sans-serif;
+    background: radial-gradient(circle at 50% 100%, #617175 0%, #1e2427 100%);
+    color: #c5c5c5;
+    min-height: 100vh;
+    margin: 0;
+    letter-spacing: 0.02em;
+}
+
+header {
+    padding: 24px 0 16px 0;
+    text-align: center;
+}
+
+header h1 {
+    color: #c5c5c5;
+    font-family: 'Outfit', 'Montserrat', 'Segoe UI', Arial, sans-serif;
+    font-size: 2.5rem;
+    margin: 0;
+    letter-spacing: 0.05em;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline-block;
+    margin: 0 18px;
+}
+
+nav ul li a {
+    color: #66fcf1;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-family: 'Rajdhani', 'Orbitron', 'Montserrat', 'Segoe UI', Arial, sans-serif;
+    transition: color 0.2s;
+    font-weight: 500;
+}
+
+nav ul li a:hover {
+    color: #c5c5c5;
+    text-decoration: underline;
+}
+
+.panel-admin {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 32px 20px;
+}
+
+h1 {
+    font-family: 'Outfit', 'Montserrat', 'Segoe UI', Arial, sans-serif;
+    font-size: 2.5rem;
+    margin: 0 0 2rem 0;
+    color: #66fcf1;
+    text-align: center;
+    letter-spacing: 0.05em;
+}
+
+h2 {
+    font-family: 'Outfit', 'Montserrat', 'Segoe UI', Arial, sans-serif;
+    font-size: 2rem;
+    margin: 2.5rem 0 1.5rem 0;
+    color: #c5c5c5;
+    letter-spacing: 0.04em;
+    text-align: center;
+}
+
+#usuarios-section, #naves-section, #empresas-section {
+    border: 1px solid #c5c5c566;
+    border-radius: 24px;
+    padding: 32px 20px;
+    margin: 32px auto;
+    max-width: 900px;
+    background: none;
+    box-shadow: none;
+}
+
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.card {
+    background: #23292d;
+    border-radius: 18px;
+    box-shadow: 0 2px 12px 0 rgba(30, 36, 39, 0.18);
+    color: #c5c5c5;
+    font-family: 'Rajdhani', 'Orbitron', 'Montserrat', 'Segoe UI', Arial, sans-serif;
+    padding: 1.2rem 1.5rem;
+    min-width: 260px;
+    max-width: 400px;
+    margin: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.7rem;
+    text-align: left;
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.card:hover {
+    box-shadow: 0 4px 20px 0 rgba(30, 36, 39, 0.35);
+    transform: scale(1.01);
+}
+
+.card h3 {
+    margin: 0 0 0.5rem 0;
+    font-family: 'Orbitron', 'Outfit', 'Montserrat', 'Segoe UI', Arial, sans-serif;
+    color: #bfc9d1;
+    font-size: 1.3rem;
+    letter-spacing: 0.03em;
+}
+
+.card p {
+    margin: 0.1rem 0;
+    font-size: 1rem;
+    color: #c5c5c5;
+}
+
+.card ul {
+    padding: 0;
+    color: #66fcf1;
+    font-size: 0.98rem;
+    list-style-type: none;
+}
+
+.card button,
+#crearNaveForm button,
+#cerrarSesion {
+    background: #66fcf1;
+    color: #23292d;
+    border: none;
+    border-radius: 8px;
+    padding: 0.7rem 1.6rem;
+    font-family: 'Rajdhani', 'Orbitron', 'Montserrat', 'Segoe UI', Arial, sans-serif;
+    font-size: 1.05rem;
+    font-weight: bold;
+    margin-top: 0.5rem;
+    cursor: pointer;
+    transition: background 0.3s, color 0.2s, transform 0.2s;
+    box-shadow: 0 2px 8px 0 rgba(30, 36, 39, 0.13);
+}
+
+.card button:hover,
+#crearNaveForm button:hover,
+#cerrarSesion:hover {
+    background: #1e2427;
+    color: #66fcf1;
+    transform: scale(1.04);
+}
+
+#buscarUsuarios, #buscarNaves, #buscarEmpresas {
+    max-width: 320px;   /* O el ancho que prefieras, por ejemplo 240px */
+    width: 100%;
+    margin: 0 auto 1.5rem auto;
+    display: block;
+}
+
+input[type="text"],
+input[type="number"] {
+    background: rgba(97, 113, 117, 0.13);
+    color: #c5c5c5;
+    border: none;
+    border-radius: 10px;
+    padding: 0.7rem 1rem;
+    font-size: 1rem;
+    font-family: 'Rajdhani', 'Orbitron', 'Montserrat', 'Segoe UI', Arial, sans-serif;
+    outline: none;
+    transition: background 0.2s, color 0.2s;
+    margin-bottom: 0.8rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus {
+    background: rgba(212, 212, 212, 0.1);
+    color: #66fcf1;
+}
+
+section {
+    background: #2d353a;
+    border-radius: 24px;
+    padding: 32px 20px;
+    margin: 32px auto;
+    box-shadow: 0 2px 12px 0 rgba(30, 36, 39, 0.18);
+    max-width: 900px;
+}
+
+#crearNaveForm {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem 2rem;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 1.5rem;
+}
+
+#crearNaveForm label {
+    font-size: 1rem;
+    color: #bfc9d1;
+    margin-bottom: 0.2rem;
+    width: 100%;
+}
+
+#crearNaveForm input {
+    min-width: 180px;
+    max-width: 320px;
+}
+
+#cerrarSesion {
+    display: block;
+    margin: 2rem auto 2.5rem auto;
+    border: 2px solid rgba(102, 252, 241, 0.6);
+    background: none;
+    color: #66fcf1;
+}
+
+#cerrarSesion:hover {
+    background: #66fcf1;
+    color: #23292d;
+    border-color: #66fcf1;
+}
+
+input[type="text"]::placeholder,
+input[type="number"]::placeholder {
+    color: #bfc9d1;
+    opacity: 0.7;
+}
+
+#crear-nave-section {
+    padding: 16px 10px 18px 10px; /* Menos espacio arriba y en los lados */
+    margin-top: 12px;             /* Menos espacio por arriba */
+    margin-bottom: 18px;
+    max-width: 900px;
+    border-radius: 20px;
+    background: #2d353a;
+    box-shadow: 0 2px 12px 0 rgba(30, 36, 39, 0.18);
+}
+
+#crear-nave-section h2 {
+    margin-top: 0.3rem; /* Menos espacio arriba del título */
+    margin-bottom: 1.2rem;
+}
+
+#crear-nave-section form {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.7rem 1.2rem;      /* Menos espacio entre campos */
+    align-items: flex-end;
+    justify-content: flex-start;
+    margin-top: 0.5rem;      /* Menos espacio arriba del form */
+    margin-bottom: 0;        /* Sin espacio extra abajo */
+    padding: 0;              /* Sin padding extra */
+    justify-content: center; /* Alinear a la izquierda */
+}
+
+#crear-nave-section input {
+    min-width: 120px;
+    max-width: 180px;
+    margin-bottom: 0;
+    padding: 0.5rem 0.7rem;  /* Campos más compactos */
+}
+
+#crear-nave-section button {
+    margin-top: 0;
+    align-self: stretch;
+    padding: 0.5rem 1.2rem;  /* Botón más compacto */
+}
+
+/* Responsive: en pantallas pequeñas, sigue compacto */
+@media (max-width: 900px) {
+    .panel-admin {
+        padding: 12px 2vw;
+    }
+    section {
+        padding: 18px 4px;
+        margin: 18px 4px;
+        max-width: 98vw;
+    }
+    .cards-container {
+        gap: 0.7rem;
+    }
+    .card {
+        padding: 0.8rem 0.7rem;
+        min-width: 180px;
+        max-width: 98vw;
+    }
+    #crearNaveForm {
+        flex-direction: column;
+        gap: 0.7rem;
+        padding: 1rem 0.5rem;
+    }
+    #crearNaveForm input {
+        width: 100%;
+        min-width: 0;
+        max-width: 100%;
+    }
+    #sym\:section#crear-nave-section form {
+        flex-direction: column;
+        gap: 0.7rem;
+        padding: 1rem 0.5rem;
+        align-items: stretch;
+    }
+    #sym\:section#crear-nave-section input,
+    #sym\:section#crear-nave-section button {
+        width: 100%;
+        min-width: 0;
+        max-width: 100%;
+    }
+    #crear-nave-section {
+        padding: 8px 2vw 12px 2vw;
+        margin-top: 8px;
+        margin-bottom: 12px;
+    }
+    #crear-nave-section form {
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 0;
+        align-items: stretch;
+    }
+    #crear-nave-section input,
+    #crear-nave-section button {
+        width: 100%;
+        min-width: 0;
+        max-width: 100%;
+        padding: 0.5rem 0.7rem;
+    }
+}

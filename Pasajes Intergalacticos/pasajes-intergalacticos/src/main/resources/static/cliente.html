@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bienvenido a OrbitExpress - Cliente</title>
+    <link rel="stylesheet" href="styles/cliente.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <h1>Bienvenido a OrbitExpress </h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Cerrar Sesión</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Buscador -->
+    <section id="viajes-section">
+        <h2>Viajes Disponibles</h2>
+        <div id="buscador" class="buscador-form">
+            <input type="text" id="origen" placeholder="Buscar origen..." />
+            <input type="text" id="destino" placeholder="Buscar destino..." />
+            <input type="date" id="fecha-salida" placeholder="Fecha de salida" />
+            <select id="ordenar">
+                <option value="precio-asc">Ordenar por precio: Más barato</option>
+                <option value="precio-desc">Ordenar por precio: Más caro</option>
+            </select>
+            <button id="buscar-btn">Buscar</button>
+        </div>
+        <div id="viajes-list"></div>
+    </section>
+
+    <!-- Mis Reservas -->
+    <section id="reservas-section">
+        <h2>Mis Reservas</h2>
+        <div id="reservas-list">No tienes reservas realizadas.</div>
+    </section>
+
+    <!-- Favoritos -->
+    <section id="favoritos-section">
+        <h2>Mis Viajes Favoritos</h2>
+        <div id="favoritos-list">No hay favoritos seleccionados.</div>
+    </section>
+
+    <script src="js/cliente.js"></script>
+</body>
+
+</html>

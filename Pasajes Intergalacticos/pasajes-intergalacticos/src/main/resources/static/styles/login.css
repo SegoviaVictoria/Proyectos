@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Outfit:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap');
+
+body {
+    font-family: 'Rajdhani', 'Orbitron', 'Montserrat', 'Segoe UI', Arial, sans-serif;
+    background: radial-gradient(circle at 50% 100%, #617175 0%, #1e2427 100%);
+    color: #f3f6fa;
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    letter-spacing: 0.02em;
+}
+
+.container {
+    background: #2d353a;
+    padding: 2.5rem 2rem;
+    border-radius: 28px;
+    width: 340px;
+    box-shadow: 0 8px 32px 0 rgba(30, 36, 39, 0.35), 0 1.5px 8px 0 rgba(97, 113, 117, 0.10);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+h2 {
+    font-family: 'Outfit', 'Montserrat', 'Segoe UI', Arial, sans-serif;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #c5c5c5;
+    font-size: 2.2rem;
+    letter-spacing: 0.04em;
+}
+
+form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+input {
+    width: 80%;
+    padding: 0.7rem 1rem;
+    margin: 0.7rem 0;
+    border: none;
+    border-radius: 12px;
+    background: rgba(97, 113, 117, 0.13);
+    color: #f3f6fa;
+    font-size: 1rem;
+    font-family: 'Rajdhani', 'Orbitron', 'Montserrat', 'Segoe UI', Arial, sans-serif;
+    outline: none;
+    transition: background 0.2s, color 0.2s;
+}
+
+input:focus {
+    background: rgba(192, 192, 192, 0.1);
+    color: #66fcf1;
+}
+
+button {
+    width: 40%;
+    padding: 0.7rem 1.6rem;
+    background:#66fcf1;
+    border: none;
+    color: #181c24;
+    font-family: 'Rajdhani', 'Orbitron', 'Montserrat', 'Segoe UI', Arial, sans-serif;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 12px;
+    margin-top: 1rem;
+    cursor: pointer;
+    transition: background 0.3s, color 0.2s, transform 0.2s;
+}
+
+button:hover {
+    color: #f3f6fa;
+    transform: scale(1.04);
+}
+
+.toggle {
+    text-align: center;
+    margin-top: 1.2rem;
+    cursor: pointer;
+    color: #bfc9d1;
+    font-size: 0.98rem;
+    transition: color 0.2s;
+    font-family: 'Rajdhani', 'Orbitron', 'Montserrat', 'Segoe UI', Arial, sans-serif;
+}
+
+.toggle:hover {
+    text-decoration: underline;
+    color: #66fcf1;
+}
+
+.hidden {
+    display: none;
+}
+
+select#register-rol, input {
+    box-sizing: border-box;
+    color: #f3f6fa;
+}
+
+select#register-rol {
+    width: 80%;
+    padding: 0.7rem 1rem;
+    margin: 0.7rem 0;
+    border: none;
+    border-radius: 12px;
+    background: rgba(97, 113, 117, 0.13);
+    color: #f3f6fa;
+    font-size: 1rem;
+    font-family: 'Rajdhani', 'Orbitron', 'Montserrat', 'Segoe UI', Arial, sans-serif;
+    outline: none;
+    transition: background 0.2s, color 0.2s;
+}
+
+select#register-rol:focus {
+    background: rgba(192, 192, 192, 0.1);
+    color: #66fcf1;
+}
+
+select#register-rol option {
+    background: #23292d;
+    color: #f3f6fa;
+    font-family: 'Rajdhani', 'Orbitron', 'Montserrat', 'Segoe UI', Arial, sans-serif;
+}

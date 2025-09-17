@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Outfit:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  background: radial-gradient(circle at 50% 100%, #617175 0%, #1e2427 100%);
+  color: #f3f6fa; 
+  min-height: 100vh;
+  width: 100vw;
+  overflow-x: hidden;
+  letter-spacing: 0.02em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Contenedor principal */
+.main-container {
+  max-width: 900px;
+  margin: 3rem auto;
+  padding: 2.5rem 2rem;
+  background: rgba(24, 28, 36, 0.98);
+  border-radius: 28px;
+  box-shadow: 0 8px 40px 0 rgba(0, 0, 0, 0.25), 0 1.5px 8px 0 #1a1a2e;
+  position: relative;
+  z-index: 1;
+}
+
+h1 {
+  font-family: 'Outfit', 'Orbitron', 'Montserrat', 'Segoe UI', Arial, sans-serif;
+  font-size: 5vw;
+  margin-bottom: 1.2rem;
+  text-align: center;
+}
+
+p {
+  font-size: 1.1rem;
+  font-family: 'Rajdhani', 'Orbitron', 'Montserrat', 'Segoe UI', Arial, sans-serif;
+  color: #bfc9d1;
+  margin-bottom: 1.2rem;
+  line-height: 1.7;
+  text-align: center;
+  font-weight: 500;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  background: none;
+  border: none;
+  outline: none;
+}
+
+/* Botones modernos */
+.start-button {
+  padding: 0.7rem 1.6rem;
+  font-family: 'Rajdhani', 'Orbitron', 'Montserrat', 'Segoe UI', Arial, sans-serif;
+  font-size: 1.rem;
+  color: #f1f1f1;
+  border: 0.5px solid #bfc9d1;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s, color 0.2s;
+  font-weight: bold;
+  margin: 0.3rem 0.2rem;
+  outline: none;
+}
+
+.start-button:hover {
+  background: #dde0e2;
+  color: #32393b;
+  transform: scale(1.07);
+}
+
+/* Animación de entrada */
+.fade-in {
+  animation: fadeIn 1s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Scrollbar elegante */
+::-webkit-scrollbar {
+  width: 10px;
+  background: #232a34;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(120deg, #bfc9d1 0%, #232a34 100%);
+  border-radius: 8px;
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+
+  .landing-container,
+  .main-container,
+  .card {
+    max-width: 98vw;
+    padding: 1.2rem 0.5rem;
+  }
+
+  h1 {
+    font-size: 2.1rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  h3 {
+    font-size: 1.1rem;
+  }
+}
