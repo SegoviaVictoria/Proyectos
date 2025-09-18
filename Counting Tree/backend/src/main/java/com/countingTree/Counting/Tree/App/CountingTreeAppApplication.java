@@ -8,6 +8,7 @@ public class CountingTreeAppApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(CountingTreeAppApplication.class, args);
+		System.out.println("One, Two, Tree");
 	}
 
 }
