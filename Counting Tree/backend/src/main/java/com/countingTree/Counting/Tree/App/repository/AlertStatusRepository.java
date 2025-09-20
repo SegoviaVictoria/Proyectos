@@ -1,0 +1,1 @@
+public interface AlertStatusRepository extends JpaRepository<AlertStatus, Long> {}
