@@ -28,7 +28,7 @@ public class Alert {
     @Enumerated(EnumType.STRING)
     private AlertStatus status = AlertStatus.PENDING;
 
-    @ManyToMany(fetch = Fetch.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
         name = "plant_alert",
         joinColumns = @JoinColumn(name = "alert_id"),
@@ -37,12 +37,12 @@ public class Alert {
     @JsonManagedReference
     private Set<Plant> plants = new HashSet<>();
 
-    @ManyToOne(fetch = Fetch.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "created_by", nullable = false)
     @JsonBackReference
     private User creator;
 
-    @ManyToOne(fetch = Fetch.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "resolved_by")
     @JsonBackReference
     private User resolver;
