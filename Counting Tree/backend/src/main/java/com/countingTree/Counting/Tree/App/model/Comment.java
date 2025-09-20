@@ -18,11 +18,11 @@ public class Comment {
 
     // -------------------------------------------------------- RELATIONS
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "plant_id", nullable = false)
     @JsonBackReference
     private Plant plant;

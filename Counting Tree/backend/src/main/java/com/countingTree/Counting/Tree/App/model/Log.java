@@ -20,17 +20,17 @@ public class Log {
 
     // -------------------------------------------------------- RELATIONS
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     @JsonIgnore
     private User performedBy;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "plant_id")
     @JsonIgnore
     private Plant relatedPlant;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "alert_id")
     @JsonIgnore
     private Alert relatedAlert;

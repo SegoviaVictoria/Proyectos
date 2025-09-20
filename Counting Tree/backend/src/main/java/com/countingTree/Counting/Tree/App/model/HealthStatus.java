@@ -22,7 +22,7 @@ public class HealthStatus {
 
     // -------------------------------------------------------- RELATIONS
 
-    @OneToMany(mappedBy = "healthStatus")
+    @OneToMany(mappedBy = "healthStatus", fetch = FetchType.LAZY)
     @JsonManagedReference
     private Set<Plant> plants = new HashSet<>();
     

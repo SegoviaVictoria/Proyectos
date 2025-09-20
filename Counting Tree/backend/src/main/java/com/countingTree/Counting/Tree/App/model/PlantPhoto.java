@@ -21,7 +21,7 @@ public class PlantPhoto {
 
     // -------------------------------------------------------- RELATIONS
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "plant_id", nullable = false)
     @JsonBackReference
     private Plant plant;
