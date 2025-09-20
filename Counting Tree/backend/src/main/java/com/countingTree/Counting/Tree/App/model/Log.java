@@ -1,8 +1,6 @@
 package com.countingTree.Counting.Tree.App.model;
 
 import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.Set;
 import jakarta.persistence.*;
 
 @Entity

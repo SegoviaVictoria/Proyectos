@@ -1,15 +1,35 @@
 package com.countingTree.Counting.Tree.App.model;
 
+import java.util.HashSet;
+import java.util.Set;
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "roles")
 public class Role {
     
-    Long roleId;
-    String roleName;
-    String roleDescription;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long roleId;
 
-    public Role(Long roleId, String roleName, String roleDescription) {
+    @Column(name = "role_name", nullable = false, unique = true)
+    private String roleName;
+
+    @Column(name = "role_description")
+    private String roleDescription;
+
+    // -------------------------------------------------------- RELATIONS
+
+    @OneToMany(mappedBy = "role")
+    private Set<User> users = new HashSet<>();
+
+    // -------------------------------------------------------- CONSTRUCTORS, GETTERS AND SETTERS
+
+    public Role(Long roleId, String roleName, String roleDescription, Set<User> users) {
         this.roleId = roleId;
         this.roleName = roleName;
         this.roleDescription = roleDescription;
+        this.users = users;
     }
 
     public Role() {
@@ -37,6 +57,14 @@ public class Role {
 
     public void setRoleDescription(String roleDescription) {
         this.roleDescription = roleDescription;
+    }
+
+    public Set<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Set<User> users) {
+        this.users = users;
     }
 
 }

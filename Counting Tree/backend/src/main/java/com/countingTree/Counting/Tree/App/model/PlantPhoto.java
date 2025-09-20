@@ -1,16 +1,32 @@
 package com.countingTree.Counting.Tree.App.model;
 
-import org.springframework.format.annotation.DateTimeFormat;
+import java.time.LocalDateTime;
+import jakarta.persistence.*;
 
+@Entity
+@Table(name = "plant_photos")
 public class PlantPhoto {
     
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long photoId;
-    private String url;
-    private DateTimeFormat dateTaken;
 
+    @Column(name = "url", nullable = false)
+    private String url;
+
+    @Column(name = "date_taken", nullable = false)
+    private LocalDateTime dateTaken;
+
+
+    // -------------------------------------------------------- RELATIONS
+
+    @ManyToOne
+    @JoinColumn(name = "plant_id", nullable = false)
     private Plant plant;
 
-    public PlantPhoto(Long photoId, String url, DateTimeFormat dateTaken, Plant plant) {
+    // -------------------------------------------------------- CONSTRUCTORS, GETTERS AND SETTERS
+
+    public PlantPhoto(Long photoId, String url, LocalDateTime dateTaken, Plant plant) {
         this.photoId = photoId;
         this.url = url;
         this.dateTaken = dateTaken;
@@ -36,11 +52,11 @@ public class PlantPhoto {
         this.url = url;
     }
 
-    public DateTimeFormat getDateTaken() {
+    public LocalDateTime getDateTaken() {
         return dateTaken;
     }
 
-    public void setDateTaken(DateTimeFormat dateTaken) {
+    public void setDateTaken(LocalDateTime dateTaken) {
         this.dateTaken = dateTaken;
     }
 

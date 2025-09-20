@@ -1,17 +1,40 @@
 package com.countingTree.Counting.Tree.App.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "species")
 public class Specie {
     
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long specieId;
+
+    @Column(name = "common_name", nullable = false)
     private String commonName;
+
+    @Column(name = "scientific_name", nullable = false, unique = true)
     private String scientificName;
+
+    @Column(name = "description")
     private String description;
 
-    public Specie(Long specieId, String commonName, String scientificName, String description) {
+    // -------------------------------------------------------- RELATIONS
+
+    @OneToMany(mappedBy = "specie")
+    private Set<Plant> plants = new HashSet<>();
+
+    // -------------------------------------------------------- CONSTRUCTORS, GETTERS AND SETTERS
+
+    public Specie(Long specieId, String commonName, String scientificName, String description, Set<Plant> plants) {
         this.specieId = specieId;
         this.commonName = commonName;
         this.scientificName = scientificName;
         this.description = description;
+        this.plants = plants;
     }
 
     public Specie() {
@@ -49,4 +72,12 @@ public class Specie {
         this.description = description;
     }
 
+    public Set<Plant> getPlants() {
+        return plants;
+    }
+
+    public void setPlants(Set<Plant> plants) {
+        this.plants = plants;
+    }
+    
 }
