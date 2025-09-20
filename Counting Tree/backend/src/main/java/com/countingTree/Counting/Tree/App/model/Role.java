@@ -3,6 +3,7 @@ package com.countingTree.Counting.Tree.App.model;
 import java.util.HashSet;
 import java.util.Set;
 import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.*;
 
 @Entity
 @Table(name = "roles")
@@ -21,6 +22,7 @@ public class Role {
     // -------------------------------------------------------- RELATIONS
 
     @OneToMany(mappedBy = "role")
+    @JsonManagedReference
     private Set<User> users = new HashSet<>();
 
     // -------------------------------------------------------- CONSTRUCTORS, GETTERS AND SETTERS

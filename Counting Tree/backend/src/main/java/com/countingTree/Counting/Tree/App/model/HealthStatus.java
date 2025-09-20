@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.*;
 
 @Entity
 @Table(name = "health_statuses")
@@ -22,6 +23,7 @@ public class HealthStatus {
     // -------------------------------------------------------- RELATIONS
 
     @OneToMany(mappedBy = "healthStatus")
+    @JsonManagedReference
     private Set<Plant> plants = new HashSet<>();
     
     // -------------------------------------------------------- CONSTRUCTORS, GETTERS AND SETTERS

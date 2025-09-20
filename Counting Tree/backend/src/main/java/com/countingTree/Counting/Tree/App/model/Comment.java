@@ -1,5 +1,7 @@
 package com.countingTree.Counting.Tree.App.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -22,6 +24,7 @@ public class Comment {
 
     @ManyToOne
     @JoinColumn(name = "plant_id", nullable = false)
+    @JsonBackReference
     private Plant plant;
 
     

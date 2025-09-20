@@ -2,6 +2,7 @@ package com.countingTree.Counting.Tree.App.model;
 
 import java.time.LocalDateTime;
 import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.*;
 
 @Entity
 @Table(name = "plant_photos")
@@ -22,6 +23,7 @@ public class PlantPhoto {
 
     @ManyToOne
     @JoinColumn(name = "plant_id", nullable = false)
+    @JsonBackReference
     private Plant plant;
 
     // -------------------------------------------------------- CONSTRUCTORS, GETTERS AND SETTERS

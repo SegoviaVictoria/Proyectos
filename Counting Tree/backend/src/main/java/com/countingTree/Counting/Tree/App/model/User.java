@@ -1,8 +1,8 @@
 package com.countingTree.Counting.Tree.App.model;
 
 import java.util.Set;
-
 import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.*;
 
 @Entity
 @Table(name = "users")
@@ -22,6 +22,7 @@ public class User {
     private String email;
 
     @Column(name = "password", nullable = false)
+    @JsonIgnore
     private String password;
 
     @Column(name = "photo")
@@ -31,28 +32,37 @@ public class User {
 
     @ManyToOne
     @JoinColumn(name = "role_id", nullable = false)
-    private Role rol;
+    @JsonBackReference
+    private Role role;
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private Set<Plant> plantsRegistered;
+
+    @OneToMany(mappedBy = "creator", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private Set<Alert> alertsCreated;
+
+    @OneToMany(mappedBy = "resolver", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private Set<Alert> alertsResolved;
 
     // Commented out to avoid cyclic dependency issues
-    // private Set<Comment> commentsMade; 
-    // private Set<Log> logsPerformed; 
+    // private Set<Comment> commentsMade;
+    // private Set<Log> logsPerformed;
     // private Set<PlantPhoto> plantPhotosUploaded;
     // private Set<Export> exportsMade;
 
     // -------------------------------------------------------- CONSTRUCTORS, GETTERS AND SETTERS
 
-    public User(Long userId, String firstName, String lastName, String email, String password, String photo, Role rol, Set<Plant> plantsRegistered, Set<Alert> alertsCreated, Set<Alert> alertsResolved) {
+    public User(Long userId, String firstName, String lastName, String email, String password, String photo, Role role, Set<Plant> plantsRegistered, Set<Alert> alertsCreated, Set<Alert> alertsResolved) {
         this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
         this.photo = photo;
-        this.rol = rol;
+        this.role = role;
         this.plantsRegistered = plantsRegistered;
         this.alertsCreated = alertsCreated;
         this.alertsResolved = alertsResolved;
@@ -109,12 +119,12 @@ public class User {
         this.photo = photo;
     }
 
-    public Role getRol() {
-        return rol;
+    public Role getRole() {
+        return role;
     }
 
-    public void setRol(Role rol) {
-        this.rol = rol;
+    public void setRole(Role role) {
+        this.role = role;
     }
 
     public Set<Plant> getPlantsRegistered() {

@@ -2,8 +2,8 @@ package com.countingTree.Counting.Tree.App.model;
 
 import java.util.HashSet;
 import java.util.Set;
-
 import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.*;
 
 @Entity
 @Table(name = "species")
@@ -24,7 +24,8 @@ public class Specie {
 
     // -------------------------------------------------------- RELATIONS
 
-    @OneToMany(mappedBy = "specie")
+    @OneToMany(mappedBy = "species")
+    @JsonManagedReference
     private Set<Plant> plants = new HashSet<>();
 
     // -------------------------------------------------------- CONSTRUCTORS, GETTERS AND SETTERS

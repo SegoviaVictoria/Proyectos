@@ -2,8 +2,8 @@ package com.countingTree.Counting.Tree.App.model;
 
 import java.time.LocalDateTime;
 import java.util.*;
-
 import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.*;
 
 @Entity
 @Table(name = "alerts")
@@ -34,14 +34,17 @@ public class Alert {
         joinColumns = @JoinColumn(name = "alert_id"),
         inverseJoinColumns = @JoinColumn(name = "plant_id")
     )
+    @JsonManagedReference
     private Set<Plant> plants = new HashSet<>();
 
     @ManyToOne
     @JoinColumn(name = "created_by", nullable = false)
+    @JsonBackReference
     private User creator;
 
     @ManyToOne
     @JoinColumn(name = "resolved_by")
+    @JsonBackReference
     private User resolver;
 
     

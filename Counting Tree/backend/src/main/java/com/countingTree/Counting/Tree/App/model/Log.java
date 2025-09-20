@@ -2,6 +2,7 @@ package com.countingTree.Counting.Tree.App.model;
 
 import java.time.LocalDateTime;
 import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.*;
 
 @Entity
 @Table(name = "logs")
@@ -21,14 +22,17 @@ public class Log {
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
+    @JsonIgnore
     private User performedBy;
 
     @ManyToOne
     @JoinColumn(name = "plant_id")
+    @JsonIgnore
     private Plant relatedPlant;
 
     @ManyToOne
     @JoinColumn(name = "alert_id")
+    @JsonIgnore
     private Alert relatedAlert;
     
     // -------------------------------------------------------- CONSTRUCTORS, GETTERS AND SETTERS

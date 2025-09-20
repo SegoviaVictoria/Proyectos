@@ -2,6 +2,7 @@ package com.countingTree.Counting.Tree.App.model;
 
 import java.util.HashSet;
 import java.util.Set;
+import com.fasterxml.jackson.annotation.*;
 import java.time.LocalDateTime;
 import jakarta.persistence.*;
 
@@ -39,15 +40,19 @@ public class Plant {
 
     @ManyToOne
     @JoinColumn(name = "health_status_id")
+    @JsonBackReference
     private HealthStatus healthStatus;
 
     @OneToMany(mappedBy = "plant", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private Set<PlantPhoto> photos = new HashSet<>();
 
     @OneToMany(mappedBy = "plant", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private Set<Comment> comments = new HashSet<>();
 
     @ManyToMany(mappedBy = "plants")
+    @JsonBackReference
     private Set<Alert> alerts = new HashSet<>();
 
     @ManyToOne

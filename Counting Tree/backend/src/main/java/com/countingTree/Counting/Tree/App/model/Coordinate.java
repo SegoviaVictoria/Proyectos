@@ -5,8 +5,8 @@ import jakarta.persistence.*;
 @Embeddable
 public class Coordinate {
     
-    double latitude;
-    double longitude;
+    private double latitude;
+    private double longitude;
 
     // -------------------------------------------------------- CONSTRUCTORS, GETTERS AND SETTERS
     public Coordinate(double latitude, double longitude) {
