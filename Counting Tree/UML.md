@@ -27,7 +27,6 @@ classDiagram
         +int photoId
         +String url
         +Date dateTaken
-        +String comment
     }
 
     class Species {
@@ -41,6 +40,7 @@ classDiagram
     class Alert {
         +int alertId
         +String type
+        +String message
         +Date creationDate
         +AlertStatus status
     }
@@ -191,8 +191,6 @@ classDiagram
 - Plant 0..* → 0..* Comment (relatedPlant)
 - Plant 1 → 0..* PlantPhoto (has)
 
-- Alert 0..* → 0..* Comment (relatedAlert)
-
 - Log 0..* → 1 User (performedBy)
 - Log 0..* → 0..* Plant (relatedPlant)
 - Log 0..* → 0..* Alert (relatedAlert)
@@ -206,6 +204,7 @@ classDiagram
 ### VerificationStatus
 - PENDING
 - VERIFIED
+- REJECTED
 
 ### AlertStatus
 - PENDING
@@ -215,4 +214,5 @@ classDiagram
 
 ### ExportFormat
 - EXCEL
+- PDF
 - CSV

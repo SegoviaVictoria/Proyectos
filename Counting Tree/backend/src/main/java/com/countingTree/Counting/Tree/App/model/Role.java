@@ -1,6 +1,7 @@
 package com.countingTree.Counting.Tree.App.model;
 
 public class Role {
+    
     Long roleId;
     String roleName;
     String roleDescription;

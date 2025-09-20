@@ -1,16 +1,16 @@
 package com.countingTree.Counting.Tree.App.model;
 
-public class Coodinate {
+public class Coordinate {
     
     double latitude;
     double longitude;
 
-    public Coodinate(double latitude, double longitude) {
+    public Coordinate(double latitude, double longitude) {
         this.latitude = latitude;
         this.longitude = longitude;
     }
 
-    public Coodinate() {
+    public Coordinate() {
     }
 
     public double getLatitude() {
