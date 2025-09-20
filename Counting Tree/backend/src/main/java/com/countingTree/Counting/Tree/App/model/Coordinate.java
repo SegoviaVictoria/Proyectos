@@ -2,14 +2,13 @@ package com.countingTree.Counting.Tree.App.model;
 
 import jakarta.persistence.*;
 
-@Entity
-@Table(name = "coordinates")
+@Embeddable
 public class Coordinate {
-    
     
     double latitude;
     double longitude;
 
+    // -------------------------------------------------------- CONSTRUCTORS, GETTERS AND SETTERS
     public Coordinate(double latitude, double longitude) {
         this.latitude = latitude;
         this.longitude = longitude;

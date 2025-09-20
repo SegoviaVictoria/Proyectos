@@ -2,27 +2,62 @@ package com.countingTree.Counting.Tree.App.model;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.time.LocalDateTime;
+import jakarta.persistence.*;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
+@Entity
+@Table(name = "plants")
 public class Plant {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long plantId;
-    private String mainPhoto;
-    private Coordinate location;
-    private DateTimeFormat datePlanted;
 
+    @Column(name = "main_photo")
+    private String mainPhoto;
+
+    @Column(name = "date_planted")
+    private LocalDateTime datePlanted;
+
+    
+    // -------------------------------------------------------- RELATIONS
+
+    @Embedded
+    private Coordinate location;
+
+    @ManyToOne
+    @JoinColumn(name = "species_id", nullable = false)
+    private Specie species;
+
+    @ManyToOne
+    @JoinColumn(name = "owner_id", nullable = false)
+    private User owner;
+
+    @ManyToOne
+    @JoinColumn(name = "verification_status_id", nullable = false)
     private VerificationStatus verificationStatus;
+
+    @ManyToOne
+    @JoinColumn(name = "health_status_id")
     private HealthStatus healthStatus;
 
-    private Specie species;
-    private User owner;
+    @OneToMany(mappedBy = "plant", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<PlantPhoto> photos = new HashSet<>();
-    private Set<Comment> comments = new HashSet<>();
-    private Set<Alert> alerts = new HashSet<>();
-    private Zone zone; // Es necesaria la Zonas?
 
-    public Plant(Long plantId, String mainPhoto, Coordinate location, DateTimeFormat datePlanted,
+    @OneToMany(mappedBy = "plant", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Comment> comments = new HashSet<>();
+
+    @ManyToMany(mappedBy = "plants")
+    private Set<Alert> alerts = new HashSet<>();
+
+    @ManyToOne
+    @JoinColumn(name = "zone_id")
+    private Zone zone;
+
+
+    // -------------------------------------------------------- CONSTRUCTORS, GETTERS AND SETTERS
+
+    public Plant(Long plantId, String mainPhoto, Coordinate location, LocalDateTime datePlanted,
             VerificationStatus verificationStatus, HealthStatus healthStatus, Specie species, User owner, Zone zone) {
         this.plantId = plantId;
         this.mainPhoto = mainPhoto;
@@ -62,11 +97,11 @@ public class Plant {
         this.location = location;
     }
 
-    public DateTimeFormat getDatePlanted() {
+    public LocalDateTime getDatePlanted() {
         return datePlanted;
     }
 
-    public void setDatePlanted(DateTimeFormat datePlanted) {
+    public void setDatePlanted(LocalDateTime datePlanted) {
         this.datePlanted = datePlanted;
     }
 
@@ -134,5 +169,4 @@ public class Plant {
         this.zone = zone;
     }
 
-    
 }

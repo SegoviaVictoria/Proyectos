@@ -1,25 +1,47 @@
 package com.countingTree.Counting.Tree.App.model;
 
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
+import jakarta.persistence.*;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
+@Entity
+@Table(name = "logs")
 public class Log {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long logId;
-    private String actionType;
-    private DateTimeFormat actionDate;
 
+    @Column(name = "action_type", nullable = false)
+    private String actionType;
+
+    @Column(name = "action_date", nullable = false)
+    private LocalDateTime actionDate;
+
+    // -------------------------------------------------------- RELATIONS
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
     private User performedBy;
-    private Set<Plant> relatedPlants = new HashSet<>();
-    private Set<Alert> relatedAlerts = new HashSet<>();
+
+    @ManyToOne
+    @JoinColumn(name = "plant_id")
+    private Plant relatedPlant;
+
+    @ManyToOne
+    @JoinColumn(name = "alert_id")
+    private Alert relatedAlert;
     
-    public Log(Long logId, String actionType, DateTimeFormat actionDate, User performedBy) {
+    // -------------------------------------------------------- CONSTRUCTORS, GETTERS AND SETTERS
+
+    public Log(Long logId, String actionType, LocalDateTime actionDate, User performedBy, Plant relatedPlant, Alert relatedAlert) {
         this.logId = logId;
         this.actionType = actionType;
         this.actionDate = actionDate;
         this.performedBy = performedBy;
+        this.relatedPlant = relatedPlant;
+        this.relatedAlert = relatedAlert;
     }
 
     public Log() {
@@ -41,11 +63,11 @@ public class Log {
         this.actionType = actionType;
     }
 
-    public DateTimeFormat getActionDate() {
+    public LocalDateTime getActionDate() {
         return actionDate;
     }
 
-    public void setActionDate(DateTimeFormat actionDate) {
+    public void setActionDate(LocalDateTime actionDate) {
         this.actionDate = actionDate;
     }
 
@@ -57,20 +79,20 @@ public class Log {
         this.performedBy = performedBy;
     }
 
-    public Set<Plant> getRelatedPlants() {
-        return relatedPlants;
+    public Plant getRelatedPlant() {
+        return relatedPlant;
     }
 
-    public void setRelatedPlants(Set<Plant> relatedPlants) {
-        this.relatedPlants = relatedPlants;
+    public void setRelatedPlant(Plant relatedPlant) {
+        this.relatedPlant = relatedPlant;
     }
 
-    public Set<Alert> getRelatedAlerts() {
-        return relatedAlerts;
+    public Alert getRelatedAlert() {
+        return relatedAlert;
     }
 
-    public void setRelatedAlerts(Set<Alert> relatedAlerts) {
-        this.relatedAlerts = relatedAlerts;
+    public void setRelatedAlert(Alert relatedAlert) {
+        this.relatedAlert = relatedAlert;
     }
- 
+
 }

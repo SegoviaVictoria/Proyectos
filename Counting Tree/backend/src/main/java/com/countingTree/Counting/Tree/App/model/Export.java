@@ -1,15 +1,33 @@
 package com.countingTree.Counting.Tree.App.model;
 
 import java.time.LocalDateTime;
+import jakarta.persistence.*;
 
+@Entity
+@Table(name = "exports")
 public class Export {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long exportId;
-    private ExportFormat format;
+
+    @Column(name = "export_date", nullable = false)
     private LocalDateTime exportDate;
+
+    @Column(name = "file_path", nullable = false)
     private String filePath;
 
+
+    // -------------------------------------------------------- RELATIONS
+
+    @Enumerated(EnumType.STRING)
+    private ExportFormat format;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
     private User generatedBy;
+
+    // -------------------------------------------------------- CONSTRUCTORS, GETTERS AND SETTERS
 
     public Export(Long exportId, ExportFormat format, LocalDateTime exportDate, String filePath, User generatedBy) {
         this.exportId = exportId;
