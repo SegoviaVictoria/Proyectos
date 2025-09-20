@@ -1,26 +1,61 @@
 package com.countingTree.Counting.Tree.App.model;
 
-import org.springframework.format.annotation.DateTimeFormat;
+import java.time.LocalDateTime;
+import java.util.*;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "alerts")
 public class Alert {
     
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long alertId;
+
+    @Column(name = "type", nullable = false)
     private String type;
+    
+    @Column(name = "message", nullable = false)
     private String message;
-    private DateTimeFormat creationDate;
-    private AlertStatus status;
 
-    private Plant plant;
-    private User user;
+    @Column(name = "creation_date", nullable = false)
+    private LocalDateTime creationDate;
 
-    public Alert(Long alertId, String type, String message, DateTimeFormat creationDate, AlertStatus status, Plant plant, User user) {
+    
+    // -------------------------------------------------------- RELATIONS
+
+    @Enumerated(EnumType.STRING)
+    private AlertStatus status = AlertStatus.PENDING;
+
+    @ManyToMany
+    @JoinTable(
+        name = "plant_alert",
+        joinColumns = @JoinColumn(name = "alert_id"),
+        inverseJoinColumns = @JoinColumn(name = "plant_id")
+    )
+    private Set<Plant> plants = new HashSet<>();
+
+    @ManyToOne
+    @JoinColumn(name = "created_by", nullable = false)
+    private User creator;
+
+    @ManyToOne
+    @JoinColumn(name = "resolved_by")
+    private User resolver;
+
+    
+    // -------------------------------------------------------- CONSTRUCTORS, GETTERS AND SETTERS
+
+    public Alert(Long alertId, String type, String message, LocalDateTime creationDate, AlertStatus status, Set<Plant> plants, User creator, User resolver) {
         this.alertId = alertId;
         this.type = type;
         this.message = message;
         this.creationDate = creationDate;
         this.status = status;
-        this.plant = plant;
-        this.user = user;
+        this.plants = plants;
+        this.creator = creator;
+        this.resolver = resolver;
     }
 
     public Alert() {
@@ -50,11 +85,11 @@ public class Alert {
         this.message = message;
     }
 
-    public DateTimeFormat getCreationDate() {
+    public LocalDateTime getCreationDate() {
         return creationDate;
     }
 
-    public void setCreationDate(DateTimeFormat creationDate) {
+    public void setCreationDate(LocalDateTime creationDate) {
         this.creationDate = creationDate;
     }
 
@@ -66,21 +101,28 @@ public class Alert {
         this.status = status;
     }
 
-    public Plant getPlant() {
-        return plant;
+    public Set<Plant> getPlants() {
+        return plants;
     }
 
-    public void setPlant(Plant plant) {
-        this.plant = plant;
+    public void setPlants(Set<Plant> plants) {
+        this.plants = plants;
     }
 
-    public User getUser() {
-        return user;
+    public User getCreator() {
+        return creator;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setCreator(User creator) {
+        this.creator = creator;
     }
 
-    
+    public User getResolver() {
+        return resolver;
+    }
+
+    public void setResolver(User resolver) {
+        this.resolver = resolver;
+    }
+
 }

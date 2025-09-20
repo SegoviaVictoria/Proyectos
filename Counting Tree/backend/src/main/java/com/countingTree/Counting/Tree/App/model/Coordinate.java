@@ -1,6 +1,11 @@
 package com.countingTree.Counting.Tree.App.model;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "coordinates")
 public class Coordinate {
+    
     
     double latitude;
     double longitude;

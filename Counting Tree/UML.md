@@ -1,76 +1,78 @@
+# Modelo UML Counting Tree
+
 ```mermaid
 classDiagram
     class User {
-        +int userId
-        +String name
-        +String email
-        +String password
-        +String photo
+        -int userId
+        -String name
+        -String email
+        -String password
+        -String photo
     }
 
     class Role {
-        +int roleId
-        +String name
-        +String description
+        -int roleId
+        -String name
+        -String description
     }
 
     class Plant {
-        +int plantId
-        +String mainPhoto
-        +Coordinate location
-        +Date plantingDate
-        +VerificationStatus verificationStatus
-        +HealthStatus healthStatus
+        -int plantId
+        -String mainPhoto
+        -Coordinate location
+        -Date plantingDate
+        -VerificationStatus verificationStatus
+        -HealthStatus healthStatus
     }
 
     class PlantPhoto {
-        +int photoId
-        +String url
-        +Date dateTaken
+        -int photoId
+        -String url
+        -Date dateTaken
     }
 
     class Species {
-        +int speciesId
-        +String commonName
-        +String scientificName
-        +String description
-        +String requirements
+        -int speciesId
+        -String commonName
+        -String scientificName
+        -String description
+        -String requirements
     }
 
     class Alert {
-        +int alertId
-        +String type
-        +String message
-        +Date creationDate
-        +AlertStatus status
+        -int alertId
+        -String type
+        -String message
+        -Date creationDate
+        -AlertStatus status
     }
 
     class Zone {
-        +int zoneId
-        +String name
-        +List~Coordinate~ coordinates
+        -int zoneId
+        -String name
+        -List~Coordinate~ coordinates
     }
 
     class Comment {
-        +int commentId
-        +String content
-        +DateTime timestamp
+        -int commentId
+        -String content
+        -DateTime timestamp
     }
 
     class Log {
-        +int actionId
-        +String actionType
-        +DateTime timestamp
+        -int actionId
+        -String actionType
+        -DateTime timestamp
     }
 
     class Export {
-        +ExportFormat format
-        +String filters
+        -ExportFormat format
+        -String filters
     }
 
     class Coordinate {
-        +double latitude
-        +double longitude
+        -double latitude
+        -double longitude
     }
 
     %% Relaciones
@@ -78,6 +80,7 @@ classDiagram
     User --> Plant : registers/verifies
     User --> Alert : creates/resolves
     User --> Comment : author
+    User --> Export : generates
 
     Plant --> Species : belongs to
     Plant --> Zone : located in
@@ -93,13 +96,11 @@ classDiagram
     Log --> Plant : relatedPlant
     Log --> Alert : relatedAlert
 
-    Export --> User : generatedBy
-
 
 ```
 ---
 
-# Modelo UML completo Contando Árboles (Counting Trees) – actualizado
+# Modelo UML completo Contando Árboles (Counting Tree) – actualizado
 
 ## Clases
 
@@ -143,7 +144,7 @@ classDiagram
 - alertId : int
 - type : String
 - creationDate : Date
-- status : AlertStatus  # enum: PENDING, IN_PROGRESS, RESOLVED, CANCELLED
+- status : AlertStatus
 
 ### Zone
 - zoneId : int
@@ -179,23 +180,27 @@ classDiagram
 
 ## Relaciones (multiplicidades)
 
-- User 1 → 1 Role (has)
+- Role 1 → 0..* User
+
 - User 1 → 0..* Plant (registers/verifies)
-- User 1 → 0..* Alert (creates/resolves)
+- User 1 → 0..* Alert (creates)
+- User 1 → 0..* Alert (resolves)
 - User 1 → 0..* Comment (author)
 
-- Plant 1 → 1 Species (belongs to)
-- Plant 1 → 1 Zone (located in)
-- Plant 1 → 1 HealthStatus (has)
+- Plant 0..* → 1 Species (belongs to)
+- Plant 0..* → 1 Zone (located in)
+- Plant 0..* → 1 HealthStatus (has)
 - Plant 0..* → 0..* Alert (has)
-- Plant 0..* → 0..* Comment (relatedPlant)
+- Plant 1 → 0..* Comment (relatedPlant)
 - Plant 1 → 0..* PlantPhoto (has)
 
-- Log 0..* → 1 User (performedBy)
-- Log 0..* → 0..* Plant (relatedPlant)
-- Log 0..* → 0..* Alert (relatedAlert)
+- Alert 0..* → 1 AlertStatus (has)
 
-- Export 1 → 1 User (generatedBy)
+- Log 0..* → 1 User (performedBy)
+- Log 0..* → 1 Plant (relatedPlant)
+- Log 0..* → 1 Alert (relatedAlert)
+
+- Export 0..* → 1 User (generatedBy)
 
 ---
 
