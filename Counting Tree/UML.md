@@ -193,6 +193,7 @@ classDiagram
 - Plant 0..* → 0..* Alert (has)
 - Plant 1 → 0..* Comment (relatedPlant)
 - Plant 1 → 0..* PlantPhoto (has)
+- Plant 1 → 1 Location (has)
 
 - Alert 0..* → 1 AlertStatus (has)
 
