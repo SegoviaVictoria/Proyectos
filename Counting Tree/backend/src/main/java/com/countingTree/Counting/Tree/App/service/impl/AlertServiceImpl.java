@@ -19,6 +19,7 @@ public class AlertServiceImpl implements AlertService {
 
     @Override
     public void addAlert(Alert newAlert) {
+        validateNewAlert(newAlert);
         alertRepository.save(newAlert);
     }
 
@@ -36,6 +37,11 @@ public class AlertServiceImpl implements AlertService {
 
     @Override
     public void deleteAlert(Long id) {
+        Alert alertSearched = alertRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Alert with ID " + id + " not found"));
+        if (!alertSearched.getPlants().isEmpty()){
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "Alert has associated plants.")
+        }
         alertRepository.deleteById(id);
     }
 
@@ -44,12 +50,40 @@ public class AlertServiceImpl implements AlertService {
 
         Alert alertToUpdate = alertRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Alert with ID " + id + " not found"));
-        return alertRepository.save(alert);
-    }
 
+        alertToUpdate.setType(alert.getType());
+        alertToUpdate.setMessage(alert.getMessage());
+        alertToUpdate.setStatus(alert.getStatus());
+        alertToUpdate.setPlants(alert.getPlants());
+        alertToUpdate.setResolver(alert.getResolver());
+        alertRepository.save(alertToUpdate);
+
+        return alertToUpdate;
+    }
 
     // EXTRA METHODS
 
-    private void validateAlert (Alert alert)
+    public void validateNewAlert (Alert alert) {
+
+        if (alert.getAlertId() != null) {
+            throw new IllegalArgumentException("New alert cannot have an ID");
+        }
+        if (alert.getType() == null || alert.getType().isEmpty()) {
+            throw new IllegalArgumentException("Alert type cannot be null or empty");
+        }
+        if (alert.getMessage() == null || alert.getMessage().isEmpty()) {
+            throw new IllegalArgumentException("Alert message cannot be null or empty");
+        }
+        if (alert.getCreationDate() == null) {
+            throw new IllegalArgumentException("Alert creation date cannot be null");
+        }
+        if (alert.getStatus() == null) {
+            throw new IllegalArgumentException("Alert status cannot be null or empty");
+        }
+        if (alert.getCreator() == null) {
+            throw new IllegalArgumentException("Alert creator cannot be null");
+        }
+
+    }
 
 }
