@@ -1,13 +1,14 @@
 package com.countingTree.Counting.Tree.App.service.impl;
 
-import com.countingTree.Counting.Tree.App.model.Export;
-import com.countingTree.Counting.Tree.App.model.ExportFormat;
-import com.countingTree.Counting.Tree.App.model.User;
-import com.countingTree.Counting.Tree.App.repository.ExportRepository;
-import com.countingTree.Counting.Tree.App.service.ExportService;
+import java.time.LocalDateTime;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import java.time.LocalDateTime;
+
+import com.countingTree.Counting.Tree.App.model.Export;
+import com.countingTree.Counting.Tree.App.model.ExportFormat;
+import com.countingTree.Counting.Tree.App.repository.ExportRepository;
+import com.countingTree.Counting.Tree.App.service.ExportService;
 
 @Service
 public class ExportServiceImpl implements ExportService {
@@ -16,7 +17,7 @@ public class ExportServiceImpl implements ExportService {
     // Currently, these methods simulate export functionality.
 
     @Autowired
-	private final ExportRepository exportRepository;
+	private ExportRepository exportRepository;
 
 	@Override
 	public Export exportDataToEXCEL() {

@@ -6,13 +6,12 @@ import com.countingTree.Counting.Tree.App.service.HealthStatusService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class HealthStatusServiceImpl implements HealthStatusService {
 
     @Autowired
-	private final HealthStatusRepository healthStatusRepository;
+	private HealthStatusRepository healthStatusRepository;
 
 	@Override
 	public void addHealthStatus(HealthStatus newHealthStatus) {
