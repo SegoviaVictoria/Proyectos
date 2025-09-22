@@ -40,7 +40,7 @@ public class AlertServiceImpl implements AlertService {
         Alert alertSearched = alertRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Alert with ID " + id + " not found"));
         if (!alertSearched.getPlants().isEmpty()){
-            throw new ResponseStatusException(HttpStatus.CONFLICT, "Alert has associated plants.")
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "Alert has associated plants and cannot be erased.")
         }
         alertRepository.deleteById(id);
     }
