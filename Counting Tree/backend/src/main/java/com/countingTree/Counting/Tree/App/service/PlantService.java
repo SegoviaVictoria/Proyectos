@@ -12,7 +12,7 @@ public interface PlantService {
 
     void deletePlant(Long plantId);
 
-    String getPlantDetails(Long plantId);
+    String getPlant(Long plantId);
 
     List<Plant> getAllPlants();
 

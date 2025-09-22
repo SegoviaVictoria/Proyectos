@@ -1,10 +1,24 @@
 package com.countingTree.Counting.Tree.App.model;
 
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
-import com.fasterxml.jackson.annotation.*;
-import java.time.LocalDateTime;
-import jakarta.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "plants")
@@ -51,7 +65,7 @@ public class Plant {
     @JsonManagedReference
     private Set<Comment> comments = new HashSet<>();
 
-    @ManyToMany(mappedBy = "plants")
+    @ManyToMany(mappedBy = "alert")
     @JsonBackReference
     private Set<Alert> alerts = new HashSet<>();
 
