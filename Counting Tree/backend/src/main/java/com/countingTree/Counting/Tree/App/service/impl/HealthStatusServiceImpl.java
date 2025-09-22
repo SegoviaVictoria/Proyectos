@@ -3,9 +3,16 @@ package com.countingTree.Counting.Tree.App.service.impl;
 import com.countingTree.Counting.Tree.App.model.HealthStatus;
 import com.countingTree.Counting.Tree.App.repository.HealthStatusRepository;
 import com.countingTree.Counting.Tree.App.service.HealthStatusService;
+
+import jakarta.persistence.EntityNotFoundException;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
+
+import org.springframework.web.server.ResponseStatusException;
 
 @Service
 public class HealthStatusServiceImpl implements HealthStatusService {
@@ -28,12 +35,12 @@ public class HealthStatusServiceImpl implements HealthStatusService {
 
 	@Override
 	public void updateHealthStatus(Long healthStatusId, HealthStatus healthStatus) {
-		HealthStatus existing = healthStatusRepository.findById(healthStatusId)
+		HealthStatus existingHealthStatus = healthStatusRepository.findById(healthStatusId)
                 .orElseThrow(() -> new EntityNotFoundException("Health Status with ID " + healthStatusId + " not found."));
             
-		existing.setName(healthStatus.getName());
-		existing.setDescription(healthStatus.getDescription());
-		healthStatusRepository.save(existing);
+		existingHealthStatus.setName(healthStatus.getName());
+		existingHealthStatus.setDescription(healthStatus.getDescription());
+		healthStatusRepository.save(existingHealthStatus);
 	}
 
 	@Override
@@ -42,7 +49,7 @@ public class HealthStatusServiceImpl implements HealthStatusService {
                 .orElseThrow(() -> new EntityNotFoundException("Health Status with ID " + healthStatusId + " not found."));
         
         if (!existing.getPlants().isEmpty()){
-            throw new ResponseStatusException(HttpStatus.CONFLICT, "This Health Status has associated plants and cannot be erased.")
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "This Health Status has associated plants and cannot be erased.");
         }
         
 		healthStatusRepository.deleteById(healthStatusId);
