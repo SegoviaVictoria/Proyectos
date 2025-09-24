@@ -19,13 +19,13 @@ public class Role {
     @Column(name = "role_description")
     private String roleDescription;
 
-    // -------------------------------------------------------- RELATIONS
+    // ------------------------------------------------------------ RELATIONS
 
     @OneToMany(mappedBy = "role")
     @JsonManagedReference
     private Set<User> users = new HashSet<>();
 
-    // -------------------------------------------------------- CONSTRUCTORS, GETTERS AND SETTERS
+    // ------------------------------------ CONSTRUCTORS, GETTERS AND SETTERS
 
     public Role(Long roleId, String roleName, String roleDescription, Set<User> users) {
         this.roleId = roleId;
