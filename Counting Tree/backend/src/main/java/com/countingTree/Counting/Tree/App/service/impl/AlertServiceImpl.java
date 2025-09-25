@@ -21,7 +21,7 @@ public class AlertServiceImpl implements AlertService {
 
     @Override
     public void addAlert(Alert newAlert) {
-        validateAlert(newAlert);
+        validateNewAlert(newAlert);
         alertRepository.save(newAlert);
     }
 
@@ -65,10 +65,10 @@ public class AlertServiceImpl implements AlertService {
 
     // EXTRA METHODS
 
-    public void validateAlert (Alert alert) {
+    public void validateNewAlert (Alert alert) {
 
         if (alert.getAlertId() != null) {
-            throw new IllegalArgumentException("New alert must have an ID");
+            throw new IllegalArgumentException("New alert cannot have an ID");
         }
         if (alert.getType() == null || alert.getType().isEmpty()) {
             throw new IllegalArgumentException("Alert type cannot be null or empty");
@@ -85,6 +85,7 @@ public class AlertServiceImpl implements AlertService {
         if (alert.getCreator() == null) {
             throw new IllegalArgumentException("Alert creator cannot be null");
         }
+
     }
 
 }

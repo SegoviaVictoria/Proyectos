@@ -32,7 +32,7 @@ public class SpecieServiceImpl implements SpecieService {
     public void updateSpecie(Long specieId, Specie specie) {
         Specie existingSpecie = specieRepository.findById(specieId)
                 .orElseThrow(() -> new IllegalArgumentException("Specie with ID " + specieId + " not found."));
-        
+
         existingSpecie.setCommonName(specie.getCommonName());
         existingSpecie.setScientificName(specie.getScientificName());
         existingSpecie.setDescription(specie.getDescription());
@@ -47,8 +47,8 @@ public class SpecieServiceImpl implements SpecieService {
                 .orElseThrow(() -> new IllegalArgumentException("Specie with ID " + specieId + " not found."));
 
         if (!existingSpecie.getPlants().isEmpty()) {
-                throw new IllegalArgumentException("Specie with ID " + specieId + " has associated plants and cannot be deleted.");
-        }else {
+            throw new IllegalArgumentException("Specie with ID " + specieId + " has associated plants and cannot be deleted.");
+        } else {
             specieRepository.deleteById(specieId);
         }
     }
@@ -57,9 +57,8 @@ public class SpecieServiceImpl implements SpecieService {
     public List<Specie> getAllSpecies() {
         return specieRepository.findAll();
     }
-    
-    // EXTRA METHODS
 
+    // EXTRA METHODS
     private void validateSpecie(Specie specie) {
         if (specie == null) {
             throw new IllegalArgumentException("Specie must not be null");

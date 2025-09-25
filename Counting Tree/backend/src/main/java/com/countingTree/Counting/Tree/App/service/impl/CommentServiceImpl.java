@@ -29,7 +29,7 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
-    public void editComment(Long commentId, Comment newComment) {
+    public void updateComment(Long commentId, Comment newComment) {
         Comment existingComment = commentRepository.findById(commentId)
                 .orElseThrow(() -> new EntityNotFoundException("Comment with ID " + commentId + " not found"));
 
