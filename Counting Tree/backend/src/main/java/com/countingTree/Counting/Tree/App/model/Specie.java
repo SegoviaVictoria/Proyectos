@@ -22,13 +22,13 @@ public class Specie {
     @Column(name = "description")
     private String description;
 
-    // -------------------------------------------------------- RELATIONS
+    // ------------------------------------------------------------ RELATIONS
 
     @OneToMany(mappedBy = "species")
     @JsonManagedReference
     private Set<Plant> plants = new HashSet<>();
 
-    // -------------------------------------------------------- CONSTRUCTORS, GETTERS AND SETTERS
+    // ------------------------------------ CONSTRUCTORS, GETTERS AND SETTERS
 
     public Specie(Long specieId, String commonName, String scientificName, String description, Set<Plant> plants) {
         this.specieId = specieId;

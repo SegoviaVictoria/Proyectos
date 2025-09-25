@@ -21,15 +21,15 @@ public class Zone {
     // -------------------------------------------------------- RELATIONS
 
     @ElementCollection
-    private List<Coordinate> vertices;
+    private List<Coordinate> coordinates;
 
     // -------------------------------------------------------- CONSTRUCTORS, GETTERS AND SETTERS
 
-    public Zone(Long zoneId, String name, String description, List<Coordinate> vertices) {
+    public Zone(Long zoneId, String name, String description, List<Coordinate> coordinates) {
         this.zoneId = zoneId;
         this.name = name;
         this.description = description;
-        this.vertices = vertices;
+        this.coordinates = coordinates;
     }
 
     public Zone() {
@@ -59,12 +59,12 @@ public class Zone {
         this.description = description;
     }
 
-    public List<Coordinate> getVertices() {
-        return vertices;
+    public List<Coordinate> getCoordinates() {
+        return coordinates;
     }
 
-    public void setVertices(List<Coordinate> vertices) {
-        this.vertices = vertices;
+    public void setCoordinates(List<Coordinate> coordinates) {
+        this.coordinates = coordinates;
     }
 
 }

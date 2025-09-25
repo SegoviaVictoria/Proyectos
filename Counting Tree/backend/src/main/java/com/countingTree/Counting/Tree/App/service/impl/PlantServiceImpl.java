@@ -18,7 +18,7 @@ public class PlantServiceImpl implements PlantService {
 
     @Override
     public void addPlant(Plant newPlant) {
-        // TODO - Validar los datos del nuevo árbol si es necesario !!!
+        validatePlant(newPlant);
         plantRepository.save(newPlant);
     }
 
@@ -26,7 +26,7 @@ public class PlantServiceImpl implements PlantService {
     public void updatePlant(Long plantId, Plant newPlant) {
         Plant existingPlant = plantRepository.findById(plantId)
                 .orElseThrow(() -> new IllegalArgumentException("Plant with ID " + plantId + " not found."));
-
+        validatePlant(newPlant);
         existingPlant.setMainPhoto(newPlant.getMainPhoto());
         existingPlant.setLocation(newPlant.getLocation());
         existingPlant.setDatePlanted(newPlant.getDatePlanted());
@@ -38,15 +38,16 @@ public class PlantServiceImpl implements PlantService {
         existingPlant.setAlerts(newPlant.getAlerts());
         existingPlant.setComments(newPlant.getComments());
         existingPlant.setZone(newPlant.getZone());
-
         plantRepository.save(existingPlant);
     }
 
     @Override
     public void deletePlant(Long plantId) {
-        // TODO - plantRepository.deleteById(plantId);
+        Plant existingPlant = plantRepository.findById(plantId)
+                .orElseThrow(() -> new IllegalArgumentException("Plant with ID " + plantId + " not found."));
+        plantRepository.deleteById(plantId);
     }
-
+    
     @Override
     public Plant getPlant(Long plantId) {
         Plant existingPlant = plantRepository.findById(plantId)
@@ -67,12 +68,6 @@ public class PlantServiceImpl implements PlantService {
         plantRepository.save(plant);
     }
 
-    // @Override
-    // public void deleteCoordinateForPlant(Long plantId) {
-    //     // TODO Auto-generated method stub
-    //     throw new UnsupportedOperationException("Unimplemented method 'deleteCoordinateForPlant'");
-    // }
-
     @Override
     public Coordinate getCoordinateForPlant(Long plantId) {
         Plant plant = plantRepository.findById(plantId)
@@ -91,6 +86,22 @@ public class PlantServiceImpl implements PlantService {
                 .orElseThrow(() -> new IllegalArgumentException("Plant with ID " + plantId + " not found."));
         plant.setLocation(newCoordinate);
         plantRepository.save(plant);
+    }
+
+    // EXTRA METHODS
+    private void validatePlant(Plant plant) {
+        if (plant == null) {
+            throw new IllegalArgumentException("Plant must not be null");
+        }
+        if (plant.getSpecies() == null) {
+            throw new IllegalArgumentException("Plant must have a species");
+        }
+        if (plant.getOwner() == null) {
+            throw new IllegalArgumentException("Plant must have an owner");
+        }
+        if (plant.getLocation() == null) {
+            throw new IllegalArgumentException("Plant must have a location");
+        }
     }
 
 }

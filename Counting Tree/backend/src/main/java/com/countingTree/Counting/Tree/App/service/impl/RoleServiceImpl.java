@@ -34,13 +34,13 @@ public class RoleServiceImpl implements RoleService {
 
         roleRepository.save(existingRole);
     }
-    
+
     @Override
     public void deleteRole(Long roleId) {
         Role existingRole = roleRepository.findById(roleId)
                 .orElseThrow(() -> new IllegalArgumentException("Role with ID " + roleId + " not found."));
-        if (existingRole.getUser().isEmpty()) {
-            rolesRepository.delete(roleId);
+        if (existingRole.getUsers().isEmpty()) {
+            roleRepository.deleteById(roleId);
         }
     }
 
