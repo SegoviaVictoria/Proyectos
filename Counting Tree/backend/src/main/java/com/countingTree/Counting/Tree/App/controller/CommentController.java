@@ -1,6 +1,6 @@
 package com.countingTree.Counting.Tree.App.controller;
 
-import com.countingTree.Counting.Tree.App.model.Comment;
+import com.countingTree.Counting.Tree.App.dto.CommentDTO;
 import com.countingTree.Counting.Tree.App.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -15,19 +15,19 @@ public class CommentController {
     private CommentService commentService;
 
     @GetMapping("/{id}")
-    public ResponseEntity<Comment> getCommentById(@PathVariable Long id) {
-        return ResponseEntity.ok(commentService.getCommentById(id));
+    public ResponseEntity<CommentDTO> getCommentById(@PathVariable Long id) {
+        return ResponseEntity.ok(commentService.getCommentDTOById(id));
     }
 
     @PostMapping
-    public ResponseEntity<Void> addComment(@RequestBody Comment comment) {
-        commentService.addComment(comment);
+    public ResponseEntity<Void> addComment(@RequestBody CommentDTO commentDTO) {
+        commentService.addComment(commentDTO);
         return ResponseEntity.ok().build();
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Void> updateComment(@PathVariable Long id, @RequestBody Comment comment) {
-        commentService.updateComment(id, comment);
+    public ResponseEntity<Void> updateComment(@PathVariable Long id, @RequestBody CommentDTO commentDTO) {
+        commentService.updateComment(id, commentDTO);
         return ResponseEntity.ok().build();
     }
 
@@ -38,7 +38,7 @@ public class CommentController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Comment>> getAllComments() {
-        return ResponseEntity.ok(commentService.getAllComments());
+    public ResponseEntity<List<CommentDTO>> getAllComments() {
+        return ResponseEntity.ok(commentService.getAllCommentDTOs());
     }
 }
