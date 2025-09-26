@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/plant-photos")
+@RequestMapping("api/v1/plant-photos")
 public class PlantPhotoController {
 
     @Autowired

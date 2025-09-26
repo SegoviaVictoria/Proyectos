@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/exports")
+@RequestMapping("api/v1/exports")
 public class ExportController {
 
     @Autowired
