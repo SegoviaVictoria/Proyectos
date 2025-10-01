@@ -213,7 +213,7 @@ FLUSH PRIVILEGES;
 
 # Backend
 cd backend
-mvn clean install
+mvn clean install # necesitas tener instalado maven, sino necesitarás instalarlos en tu sistema
 mvn spring-boot:run
 
 # Frontend
